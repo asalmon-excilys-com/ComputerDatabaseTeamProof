@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="play-web">
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <dependent-module archiveName="play-modele-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/play-modele/play-modele">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="play-serviceAPI-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/play-serviceAPI/play-serviceAPI">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="play-service-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/play-service/play-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="play-daoAPI-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/play-daoAPI/play-daoAPI">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="play-dao-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/play-dao/play-dao">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="play-web"/>
+        <property name="java-output-path" value="/play-web/target/classes"/>
+    </wb-module>
+</project-modules>

@@ -1,0 +1,77 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>play</groupId>
+		<artifactId>playParent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>play-web</artifactId>
+	<packaging>war</packaging>
+	<name>play-web</name>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>play</groupId>
+			<artifactId>play-modele</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>play</groupId>
+			<artifactId>play-serviceAPI</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>play</groupId>
+			<artifactId>play-service</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>tomcat</groupId>
+			<artifactId>jsp-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+		</dependency>
+	</dependencies>
+</project>
+
+<!-- INFO: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@14d9f8e: defining beans -->
+<!-- [org.springframework.context.annotation.internalConfigurationAnnotationProcessor, -->
+<!-- org.springframework.context.annotation.internalAutowiredAnnotationProcessor, -->
+<!-- org.springframework.context.annotation.internalRequiredAnnotationProcessor -->
+<!-- ,org.springframework.context.annotation.internalCommonAnnotationProcessor, -->
+<!-- controleur,org.springframework.aop.config.internalAutoProxyCreator, -->
+<!-- org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0, -->
+<!-- org.springframework.transaction.interceptor.TransactionInterceptor#0, -->
+<!-- org.springframework.transaction.config.internalTransactionAdvisor, -->
+<!-- txManager -->
+<!-- ,implementationService -->
+<!-- ,implementationComputerDAO, -->
+<!-- implementationCompanyDAO, -->
+<!-- aDataSource -->
+<!-- ,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy -->
