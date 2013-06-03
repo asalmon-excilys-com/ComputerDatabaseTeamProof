@@ -14,11 +14,4 @@
 	<context:annotation-config />
 	<context:component-scan base-package="web" />
 	
-<!-- 	<tx:annotation-driven transaction-manager="txManager" /> -->
-
-<!-- 	<bean id="txManager" -->
-<!-- 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"> -->
-<!-- 		<property name="dataSource" ref="aDataSource" /> -->
-<!-- 	</bean> -->
-	
 </beans>

@@ -6,8 +6,6 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -27,9 +25,6 @@ public class ImplementationComputerDAO implements InterfaceComputerDAO {
 	private static final String SELECT_ALL_COMPUTERS = "SELECT c.id, c.introduced, c.discontinued, c.name, cie.id cid, cie.name cname FROM computer c left outer join company cie on c.company_id = cie.id where c.name like ? order by ";
 	private static final String LIMIT_SELECT = " limit ? , 10;";
 	private static final String SELECT_ONE_COMPUTER_BY_ID = "SELECT c.id, c.introduced, c.discontinued, c.name, cie.id cid, cie.name cname FROM computer c left outer join company cie on c.company_id = cie.id where c.id = ?;";
-
-	final static Logger logger = LoggerFactory
-			.getLogger(ImplementationComputerDAO.class);
 
 	@Autowired
 	private DataSource ds;
@@ -55,16 +50,9 @@ public class ImplementationComputerDAO implements InterfaceComputerDAO {
 		StringBuilder sb = new StringBuilder(SELECT_ALL_COMPUTERS).append(
 				UtilitaireDAO.gestionTri(s)).append(LIMIT_SELECT);
 
-		try {
-			List<Map<String, Object>> rows = jdbc.queryForList(sb.toString(),
-					insert.toArray());
-			return UtilitaireDAO.ResultSetToComputers(rows);
-		} catch (Exception e) {
-			logger.error("Erreur de recuperation de la liste des computers"
-					+ e.getMessage());
-			throw e;
-		}
-
+		List<Map<String, Object>> rows = jdbc.queryForList(sb.toString(),
+				insert.toArray());
+		return UtilitaireDAO.ResultSetToComputers(rows);
 	}
 
 	public Computer getComputerByID(Integer ID) throws Exception {
@@ -72,17 +60,11 @@ public class ImplementationComputerDAO implements InterfaceComputerDAO {
 		jdbc = new JdbcTemplate(ds);
 		ArrayList<Object> insert = new ArrayList<Object>();
 		insert.add(ID);
-		try {
-			Map<String, Object> row = jdbc.queryForMap(
-					SELECT_ONE_COMPUTER_BY_ID, insert.toArray());
 
-			return UtilitaireDAO.ResultSetToComputer(row);
-		} catch (Exception e) {
-			logger.error("Erreur de recuperation du computer par ID"
-					+ e.getMessage());
-			throw e;
-		}
+		Map<String, Object> row = jdbc.queryForMap(SELECT_ONE_COMPUTER_BY_ID,
+				insert.toArray());
 
+		return UtilitaireDAO.ResultSetToComputer(row);
 	}
 
 	public Integer getSizeComputers(String clause) throws Exception {
@@ -90,21 +72,13 @@ public class ImplementationComputerDAO implements InterfaceComputerDAO {
 		ArrayList<Object> insert = new ArrayList<Object>();
 		insert.add(clause);
 
-		try {
-			// TODO deprecated
-			@SuppressWarnings("deprecation")
-			int result = jdbc.queryForInt(COUNT_COMPUTERS, insert.toArray());
-			return result;
-		} catch (Exception e) {
-			logger.error("Erreur de recuperation de la taille de la table des computers"
-					+ e.getMessage());
-			throw e;
-		}
-
+		// TODO deprecated
+		@SuppressWarnings("deprecation")
+		int result = jdbc.queryForInt(COUNT_COMPUTERS, insert.toArray());
+		return result;
 	}
 
 	public void saveComputer(Computer cp, boolean newCp) throws Exception {
-		System.out.println("save");
 
 		jdbc = new JdbcTemplate(ds);
 
@@ -114,37 +88,23 @@ public class ImplementationComputerDAO implements InterfaceComputerDAO {
 		insert.add(UtilitaireDAO.gestionNull(cp.getDiscontinued()));
 
 		if (cp.getCompany().getId() == null) {
-			try {
-				if (newCp == true) {
-					jdbc.update(INSERT_COMPUTER_WITHOUT_CID, insert.toArray());
+			if (newCp == true) {
+				jdbc.update(INSERT_COMPUTER_WITHOUT_CID, insert.toArray());
 
-				} else {
-					insert.add(cp.getId());
-					jdbc.update(UPDATE_COMPUTER_WITHOUT_CID, insert.toArray());
-				}
-			} catch (Exception e) {
-				logger.error("Erreur de sauvegarde des ordinateurs"
-						+ e.getMessage());
-				throw e;
+			} else {
+				insert.add(cp.getId());
+				jdbc.update(UPDATE_COMPUTER_WITHOUT_CID, insert.toArray());
 			}
 
 		} else {
 			insert.add(cp.getCompany().getId());
-
-			try {
-				if (newCp == true) {
-					jdbc.update(INSERT_COMPUTER, insert.toArray());
-				} else {
-					insert.add(cp.getId());
-					jdbc.update(UPDATE_COMPUTER, insert.toArray());
-				}
-			} catch (Exception e) {
-				logger.error("Erreur de sauvegarde des ordinateurs"
-						+ e.getMessage());
-				throw e;
+			if (newCp == true) {
+				jdbc.update(INSERT_COMPUTER, insert.toArray());
+			} else {
+				insert.add(cp.getId());
+				jdbc.update(UPDATE_COMPUTER, insert.toArray());
 			}
 		}
-
 	}
 
 	public void deleteComputerByID(Integer id) throws Exception {

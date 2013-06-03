@@ -13,27 +13,54 @@
 
 	<context:component-scan base-package="orm" />
 	<context:annotation-config />
-	
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+
+		<property name="location">
+			<value>classpath:ComputerDatabase-config.properties</value>
+		</property>
+	</bean>
+
+<!-- 	Contenu du .properties -->
+<!-- 	driverClass=com.mysql.jdbc.Driver -->
+<!-- 	jdbcUrl=jdbc:mysql://localhost:3306/computerDatabase -->
+<!-- 	username=root -->
+<!-- 	password=root -->
+<!-- 	idleConnectionTestPeriodInMinutes=60 -->
+<!-- 	idleMaxAgeInMinutes=240 -->
+<!-- 	maxConnectionsPerPartition=30 -->
+<!-- 	minConnectionsPerPartition=10 -->
+<!-- 	partitionCount=3 -->
+<!-- 	acquireIncrement=5 -->
+<!-- 	statementsCacheSize=100 -->
+
+<!-- .properties placé dans apache-tomcat-7.0.34/conf -->
+
+<!-- dans catalina.properties : shared.loader=${catalina.home}/conf -->
+
+
+
 	<bean id="aDataSource" class="com.jolbox.bonecp.BoneCPDataSource"
 		destroy-method="close">
-		<property name="driverClass" value="com.mysql.jdbc.Driver" />
-		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/computerDatabase" />
-		<property name="username" value="root" />
-		<property name="password" value="root" />
-		<property name="idleConnectionTestPeriodInMinutes" value="60" />
-		<property name="idleMaxAgeInMinutes" value="240" />
-		<property name="maxConnectionsPerPartition" value="30" />
-		<property name="minConnectionsPerPartition" value="10" />
-		<property name="partitionCount" value="3" />
-		<property name="acquireIncrement" value="5" />
-		<property name="statementsCacheSize" value="100" />
+		<property name="driverClass" value="${driverClass}" />
+		<property name="jdbcUrl" value="${jdbcUrl}" />
+		<property name="username" value="${username}" />
+		<property name="password" value="${password}" />
+		<property name="idleConnectionTestPeriodInMinutes" value="${idleConnectionTestPeriodInMinutes}" />
+		<property name="idleMaxAgeInMinutes" value="${idleMaxAgeInMinutes}" />
+		<property name="maxConnectionsPerPartition" value="${maxConnectionsPerPartition}" />
+		<property name="minConnectionsPerPartition" value="${minConnectionsPerPartition}" />
+		<property name="partitionCount" value="${partitionCount}" />
+		<property name="acquireIncrement" value="${acquireIncrement}" />
+		<property name="statementsCacheSize" value="${statementsCacheSize}" />
 	</bean>
 
 
-<!-- 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"> -->
-<!-- 		<constructor-arg ref="adataSource" /> -->
-<!-- 	</bean> -->
-	
+	<!-- <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"> -->
+	<!-- <constructor-arg ref="adataSource" /> -->
+	<!-- </bean> -->
 
-	
+
+
 </beans>

@@ -19,7 +19,6 @@ public class Computer {
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	public Calendar getIntroduced() {
 		return introduced;
 	}
@@ -38,7 +37,6 @@ public class Computer {
 			this.introduced = null;
 		}
 	}
-
 	public Calendar getDiscontinued() {
 		return discontinued;
 	}
@@ -58,86 +56,43 @@ public class Computer {
 		}
 
 	}
-
 	private Calendar dateToCalendar(Date date) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
 		return cal;
 	}
-
 	public Company getCompany() {
 		return company;
 	}
 	public void setCompany(Integer company_id, String name) {
 		this.company = new Company(company_id, name);
 	}
-
+	public void setCompany(Integer company_id) {
+		this.company = new Company(company_id);
+	}
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-
+//
+//	private static Integer StringToInteger(String string) {
+//		if (string != "") {
+//			Integer i = Integer.parseInt(string);
+//			return i;
+//		} else {
+//			return null;
+//		}
+//	}
+	public Computer(){};
+	
 	public Computer(Integer id, String name, Calendar introduced,Calendar discontinued, Integer company_id, String name_company) {
 		this.id = id;
 		this.name = name;
 		this.introduced = introduced;
 		this.discontinued = discontinued;
 		this.company = new Company(company_id, name_company);
-		System.out.println(company.getId() + company.getName());
-	}
-
-	public Computer(Integer id, String name, Calendar introduced,Calendar discontinued, String company_id) {
-		
-		this(id, name, introduced,
-				discontinued, StringToInteger(company_id),
-				"");
-		
-	}
-
-	private static Integer StringToInteger(String string) {
-		if (string != "") {
-			Integer i = Integer.parseInt(string);
-			return i;
-		} else {
-			return null;
-		}
-
-	}
-
-	public Computer() {
-	}
-	
-	public Computer(String name, Date introduced, Date discontinued, Integer company_id, String name_company) {
-		this.name = name;
-		this.introduced = dateToCalendar(introduced);
-		this.discontinued = dateToCalendar(discontinued);
-		this.company = new Company(company_id, name_company);
-	}
-
-	public Computer(Integer id, String name, Date introduced,Date discontinued, Integer company_id, String name_company) {
-		this.id = id;
-		this.name = name;
-		this.introduced = dateToCalendar(introduced);
-		this.discontinued = dateToCalendar(discontinued);
-		this.company = new Company(company_id, name_company);
-	}
-
-	public Computer(String id, String name, Date introduced,Date discontinued, String company_id) {
-		
-		this(StringToInteger(id), name, introduced,
-				discontinued, StringToInteger(company_id),
-				"");
-		
-	}
-	
-	public Computer(String name, Date introduced,Date discontinued, String company_id) {
-		this(name, introduced,
-				discontinued, StringToInteger(company_id),
-				"");
-		
 	}
 	public Computer(String name, Calendar introduced, Calendar discontinued,
 			Integer cid) {
@@ -145,9 +100,7 @@ public class Computer {
 		this.name = name;
 		this.introduced = introduced;
 		this.discontinued = discontinued;
-		this.company = new Company();
-		company.setId(cid);
-		
+		this.company = new Company(cid);	
 	}
 	public Computer(Integer id, String name, Calendar introduced,
 			Calendar discontinued, Integer cid) {
@@ -155,10 +108,49 @@ public class Computer {
 		this.name = name;
 		this.introduced = introduced;
 		this.discontinued = discontinued;
-		this.company = new Company();
-		company.setId(cid);
-		System.out.println(company.getId() + company.getName());
+		this.company = new Company(cid);
 	}
 
-
+//	public Computer(Integer id, String name, Calendar introduced,Calendar discontinued, String company_id) {
+//		this(id, name, introduced,
+//				discontinued, StringToInteger(company_id),
+//				"");
+//		
+//	}
+//
+//	public Computer(String name, Date introduced, Date discontinued,
+//			Integer company_id, String name_company) {
+//		this.name = name;
+//		this.introduced = dateToCalendar(introduced);
+//		this.discontinued = dateToCalendar(discontinued);
+//		this.company = new Company(company_id, name_company);
+//	}
+//
+//	public Computer(Integer id, String name, Date introduced,
+//			Date discontinued, Integer company_id, String name_company) {
+//		this.id = id;
+//		this.name = name;
+//		this.introduced = dateToCalendar(introduced);
+//		this.discontinued = dateToCalendar(discontinued);
+//		this.company = new Company(company_id, name_company);
+//	}
+//
+//	public Computer(String id, String name, Date introduced, Date discontinued,
+//			String company_id) {
+//		this.id = StringToInteger(id);
+//		this.name = name;
+//		this.introduced = dateToCalendar(introduced);
+//		this.discontinued = dateToCalendar(discontinued);
+//		this.company = new Company(StringToInteger(company_id));
+//	}
+//
+//	public Computer(String name, Date introduced, Date discontinued,
+//			String company_id) {
+//
+//		this.name = name;
+//		this.introduced = dateToCalendar(introduced);
+//		this.discontinued = dateToCalendar(discontinued);
+//		this.company = new Company(StringToInteger(company_id));
+//
+//	}
 }

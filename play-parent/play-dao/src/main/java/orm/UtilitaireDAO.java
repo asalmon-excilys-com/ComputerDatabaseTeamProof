@@ -6,15 +6,9 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import pojo.Computer;
 
 public class UtilitaireDAO {
-	
-	final static Logger logger = LoggerFactory.getLogger(UtilitaireDAO.class);
-	
 	public static String gestionTri(Integer s) {
 		String[] type = { "c.name", "c.name", "c.name", "c.introduced",
 				"c.discontinued", "cie.name" };

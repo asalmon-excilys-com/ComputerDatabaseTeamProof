@@ -60,7 +60,4 @@ public class Page {
 	public void setCompanies(List<Company> companies) {
 		this.companies = companies;
 	}
-	public Page() {
-	}
-
 }

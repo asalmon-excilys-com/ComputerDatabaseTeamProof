@@ -2,8 +2,6 @@ package service;
 
 import java.util.Calendar;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
@@ -20,16 +18,10 @@ import serviceAPI.InterfaceService;
 @Transactional(readOnly = true)
 public class ImplementationService implements InterfaceService {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(ImplementationService.class);
-
 	@Autowired
 	InterfaceCompanyDAO companyDAO;
 	@Autowired
 	InterfaceComputerDAO computerDAO;
-
-	public ImplementationService() {
-	}
 
 	public InterfaceCompanyDAO getDAOcompany() {
 		return companyDAO;
@@ -59,13 +51,7 @@ public class ImplementationService implements InterfaceService {
 
 	@Transactional(readOnly = false)
 	public void DeleteComputer(Integer id) throws Exception {
-		try {
-			computerDAO.deleteComputerByID(id);
-		} catch (Exception e) {
-			logger.error("Erreur de suppression d'un computer" + e.getMessage());
-			throw e;
-		}
-
+		computerDAO.deleteComputerByID(id);
 	}
 
 	public Page ModifyOrAddComputer(Integer id) throws Exception {
@@ -92,34 +78,23 @@ public class ImplementationService implements InterfaceService {
 		Computer cp;
 
 		boolean newCp;
-		
+
 		Integer cid;
-		if(company_id.equalsIgnoreCase("")){
+		if (company_id.equalsIgnoreCase("")) {
 			cid = null;
-		}else{
+		} else {
 			cid = Integer.parseInt(company_id);
 		}
 
 		if (id == 0) {
-			System.out.println("company id ---"+company_id+"---");
 			cp = new Computer(name, introduced, discontinued, cid);
-			System.out.println("newCP ok");
 			newCp = true;
 		} else {
 			cp = new Computer(id, name, introduced, discontinued, cid);
-			System.out.println("newCP ok");
 			newCp = false;
 
 		}
-
-		try {
-			computerDAO.saveComputer(cp, newCp);
-		} catch (Exception e) {
-			logger.error("Erreur de sauvegarde des ordinateurs"
-					+ e.getMessage());
-			throw e;
-		}
-
+		computerDAO.saveComputer(cp, newCp);
 	}
 
 }
