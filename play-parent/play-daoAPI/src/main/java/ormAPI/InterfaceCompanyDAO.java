@@ -6,6 +6,5 @@ import pojo.Company;
 
 public interface InterfaceCompanyDAO {
 
-	public abstract List<Company> getListCompanies() throws Exception;
-
+	public abstract  List<Company> getListCompanies();
 }

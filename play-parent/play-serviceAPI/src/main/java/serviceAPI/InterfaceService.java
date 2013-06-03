@@ -6,12 +6,12 @@ import pojo.Page;
 
 public interface InterfaceService {
 
-	Page ConstructionTableauAccueil(Page page) throws Exception;
+	Page ConstructionTableauAccueil(Page page);
 
-	Page ModifyOrAddComputer(Integer id) throws Exception;
+	Page ModifyOrAddComputer(Integer id);
 
-	void DeleteComputer(Integer id) throws Exception;
+	void DeleteComputer(Integer id);
 
 	void SaveComputer(Integer id, String name, Calendar introduced,
-			Calendar discontinued, String company_id) throws Exception;
+			Calendar discontinued, String company_id);
 }

@@ -40,7 +40,7 @@ public class ImplementationComputerDAO implements InterfaceComputerDAO {
 	}
 
 	public List<Computer> getListComputersSlice(Integer starter, Integer s,
-			String clause) throws Exception {
+			String clause){
 
 		jdbc = new JdbcTemplate(ds);
 		ArrayList<Object> insert = new ArrayList<Object>();
@@ -55,7 +55,7 @@ public class ImplementationComputerDAO implements InterfaceComputerDAO {
 		return UtilitaireDAO.ResultSetToComputers(rows);
 	}
 
-	public Computer getComputerByID(Integer ID) throws Exception {
+	public Computer getComputerByID(Integer ID){
 
 		jdbc = new JdbcTemplate(ds);
 		ArrayList<Object> insert = new ArrayList<Object>();
@@ -63,11 +63,11 @@ public class ImplementationComputerDAO implements InterfaceComputerDAO {
 
 		Map<String, Object> row = jdbc.queryForMap(SELECT_ONE_COMPUTER_BY_ID,
 				insert.toArray());
-
+		assert(row!=null);
 		return UtilitaireDAO.ResultSetToComputer(row);
 	}
 
-	public Integer getSizeComputers(String clause) throws Exception {
+	public Integer getSizeComputers(String clause){
 		jdbc = new JdbcTemplate(ds);
 		ArrayList<Object> insert = new ArrayList<Object>();
 		insert.add(clause);
@@ -78,7 +78,7 @@ public class ImplementationComputerDAO implements InterfaceComputerDAO {
 		return result;
 	}
 
-	public void saveComputer(Computer cp, boolean newCp) throws Exception {
+	public boolean saveComputer(Computer cp, boolean newCp){
 
 		jdbc = new JdbcTemplate(ds);
 
@@ -105,13 +105,15 @@ public class ImplementationComputerDAO implements InterfaceComputerDAO {
 				jdbc.update(UPDATE_COMPUTER, insert.toArray());
 			}
 		}
+		return true;
 	}
 
-	public void deleteComputerByID(Integer id) throws Exception {
+	public boolean deleteComputerByID(Integer id){
 		jdbc = new JdbcTemplate(ds);
 		ArrayList<Object> insert = new ArrayList<Object>();
 		insert.add(id);
 		jdbc.update(DELETE_COMPUTER, insert.toArray());
+		return true;
 	}
 
 }

@@ -55,7 +55,7 @@ public class UtilitaireDAO {
 	}
 	
 	public static Date gestionNull(Calendar cal) {
-		Date d;
+		Date d= null;
 		if (cal != null) {
 			d = new Date(cal.getTimeInMillis());
 		} else {

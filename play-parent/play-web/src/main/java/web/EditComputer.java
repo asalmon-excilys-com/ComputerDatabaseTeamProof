@@ -23,15 +23,9 @@ public class EditComputer {
 	@RequestMapping(value = { "/ModifyOrAdd.html" }, method = RequestMethod.GET)
 	public String modifierAjouterComputer(ModelMap model,
 			@RequestParam(defaultValue = "0") Integer id) {
-
-		try {
+		
 			Page page = implServ.ModifyOrAddComputer(id);
 			model.addAttribute("page", page);
 			return page.getUrl();
-		} catch (Exception e) {
-			model.addAttribute("error", "Erreur technique " + e.getMessage());
-			e.printStackTrace();
-			return "errorPage";
-		}
 	}
 }

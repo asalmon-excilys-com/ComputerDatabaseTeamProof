@@ -7,17 +7,17 @@ import pojo.Computer;
 public interface InterfaceComputerDAO {
 	// Listes
 	public List<Computer> getListComputersSlice(Integer starter,
-			Integer s, String clause) throws Exception;
+			Integer s, String clause);
 
-	public Computer getComputerByID(Integer ID) throws Exception;
+	public Computer getComputerByID(Integer ID);
 
 	// Size
-	public Integer getSizeComputers(String clause) throws Exception;
+	public Integer getSizeComputers(String clause);
 
 	// Save
-	public void saveComputer(Computer cp, boolean newCp) throws Exception;
+	public boolean saveComputer(Computer cp, boolean newCp);
 
 	// Delete
-	public void deleteComputerByID(Integer id) throws Exception;
+	public boolean deleteComputerByID(Integer id);
 
 }

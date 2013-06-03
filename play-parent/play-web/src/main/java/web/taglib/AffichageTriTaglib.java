@@ -81,10 +81,9 @@ public class AffichageTriTaglib extends TagSupport {
 					+ "\"><a href=\"TableauComputer.html?s=" + tabCol[3]
 					+ "&f=" + f + "\">Company</a></th>");
 
-		} catch (IOException e) {
-			logger.error("Erreur de gestion headers" + e.getMessage());
-		}
+		}finally{
 		return SKIP_BODY;
+		}
 	}
 
 	public int doEndTag() {

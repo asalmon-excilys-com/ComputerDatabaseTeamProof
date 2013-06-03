@@ -76,15 +76,7 @@ public class Computer {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-//
-//	private static Integer StringToInteger(String string) {
-//		if (string != "") {
-//			Integer i = Integer.parseInt(string);
-//			return i;
-//		} else {
-//			return null;
-//		}
-//	}
+
 	public Computer(){};
 	
 	public Computer(Integer id, String name, Calendar introduced,Calendar discontinued, Integer company_id, String name_company) {
@@ -110,47 +102,4 @@ public class Computer {
 		this.discontinued = discontinued;
 		this.company = new Company(cid);
 	}
-
-//	public Computer(Integer id, String name, Calendar introduced,Calendar discontinued, String company_id) {
-//		this(id, name, introduced,
-//				discontinued, StringToInteger(company_id),
-//				"");
-//		
-//	}
-//
-//	public Computer(String name, Date introduced, Date discontinued,
-//			Integer company_id, String name_company) {
-//		this.name = name;
-//		this.introduced = dateToCalendar(introduced);
-//		this.discontinued = dateToCalendar(discontinued);
-//		this.company = new Company(company_id, name_company);
-//	}
-//
-//	public Computer(Integer id, String name, Date introduced,
-//			Date discontinued, Integer company_id, String name_company) {
-//		this.id = id;
-//		this.name = name;
-//		this.introduced = dateToCalendar(introduced);
-//		this.discontinued = dateToCalendar(discontinued);
-//		this.company = new Company(company_id, name_company);
-//	}
-//
-//	public Computer(String id, String name, Date introduced, Date discontinued,
-//			String company_id) {
-//		this.id = StringToInteger(id);
-//		this.name = name;
-//		this.introduced = dateToCalendar(introduced);
-//		this.discontinued = dateToCalendar(discontinued);
-//		this.company = new Company(StringToInteger(company_id));
-//	}
-//
-//	public Computer(String name, Date introduced, Date discontinued,
-//			String company_id) {
-//
-//		this.name = name;
-//		this.introduced = dateToCalendar(introduced);
-//		this.discontinued = dateToCalendar(discontinued);
-//		this.company = new Company(StringToInteger(company_id));
-//
-//	}
 }

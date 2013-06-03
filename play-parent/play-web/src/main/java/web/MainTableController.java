@@ -31,13 +31,8 @@ public class MainTableController {
 		page.setP(p);
 		page.setF(f);
 
-		try {
 			model.addAttribute("page",
 					implServ.ConstructionTableauAccueil(page));
 			return "TableauComputer";
-		} catch (Exception e) {
-			model.addAttribute("error", "Erreur technique " + e.getMessage());
-			return "errorPage";
-		}
 	}
 }

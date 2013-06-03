@@ -23,13 +23,7 @@ public class DeleteComputer {
 	@RequestMapping(value = { "/delete.html" }, method = RequestMethod.POST)
 	public String supprimerComputer(ModelMap model,
 			@RequestParam(defaultValue = "0") Integer id) {
-		try {
 			implServ.DeleteComputer(id);
 			return "redirect:/TableauComputer.html";
-		} catch (Exception e) {
-			model.addAttribute("error", "Erreur technique " + e.getMessage());
-			e.printStackTrace();
-			return "errorPage";
-		}
 	}
 }

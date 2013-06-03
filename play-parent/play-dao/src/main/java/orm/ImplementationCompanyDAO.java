@@ -30,7 +30,7 @@ public class ImplementationCompanyDAO implements InterfaceCompanyDAO {
 		this.ds = ds;
 	}
 
-	public List<Company> getListCompanies() throws Exception {
+	public List<Company> getListCompanies(){
 		jdbc = new JdbcTemplate(ds);
 		List<Company> companies = jdbc.query(SELECT_ALL_COMPANIES,
 				new BeanPropertyRowMapper<Company>(Company.class));

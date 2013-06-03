@@ -38,30 +38,36 @@ public class ImplementationService implements InterfaceService {
 	public void setImplDAO(InterfaceComputerDAO implDAO) {
 		this.computerDAO = implDAO;
 	}
+	
 
-	public Page ConstructionTableauAccueil(Page page) throws Exception {
+	public Page ConstructionTableauAccueil(Page page){
+		
+		Integer sizeTable = computerDAO.getSizeComputers("%" + page.getF()
+				+ "%");
 
-		page.setTailleTable(computerDAO.getSizeComputers("%" + page.getF()
-				+ "%"));
+		assert(sizeTable >=0): "La requete SQL a rencontré un problème.";
+		page.setTailleTable(sizeTable);
 
+		if(sizeTable>0){
 		page.setComputers(computerDAO.getListComputersSlice(page.getP() * 10,
 				page.getS(), "%" + page.getF() + "%"));
+		}
 		return page;
 	}
 
 	@Transactional(readOnly = false)
-	public void DeleteComputer(Integer id) throws Exception {
-		computerDAO.deleteComputerByID(id);
+	public void DeleteComputer(Integer id){
+		boolean b = computerDAO.deleteComputerByID(id);
+		assert(b==true);
 	}
 
-	public Page ModifyOrAddComputer(Integer id) throws Exception {
+	public Page ModifyOrAddComputer(Integer id){
 
 		Page page = new Page();
 
 		page.setCompanies(companyDAO.getListCompanies());
 
-		// TODO et si l'id n'est pas dasn le range de la base? genre négative
-
+		assert(id>=0): "id = " + id + "is illegal.";
 		if (id == 0) {
 			page.setUrl("NewComputer");
 		} else {
@@ -73,7 +79,7 @@ public class ImplementationService implements InterfaceService {
 
 	@Transactional(readOnly = false)
 	public void SaveComputer(Integer id, String name, Calendar introduced,
-			Calendar discontinued, String company_id) throws Exception {
+			Calendar discontinued, String company_id){
 
 		Computer cp;
 
@@ -94,7 +100,9 @@ public class ImplementationService implements InterfaceService {
 			newCp = false;
 
 		}
-		computerDAO.saveComputer(cp, newCp);
+		Boolean b =computerDAO.saveComputer(cp, newCp);
+		assert(b==true);
 	}
+	
 
 }

@@ -40,10 +40,10 @@ public class SaveComputer {
 			@RequestParam(value = "introduced", defaultValue = "") String introducedS,
 			@RequestParam(value = "discontinued", defaultValue = "") String discontinuedS,
 			@RequestParam(value = "company", defaultValue = "") String company_id) {
+		
 		// Verif name
 		if (name.isEmpty()) {
 			model.addAttribute("nameError", "error");
-		
 			return edit.modifierAjouterComputer(model, id);
 		}
 
@@ -75,17 +75,15 @@ public class SaveComputer {
 				return edit.modifierAjouterComputer(model, id);
 			}
 		}
+		
+//		if(discontinued.after(introduced)==true) {
+//			model.addAttribute("introducedError", "error");
+//			model.addAttribute("discontinuedError", "error");
+//		}
 
-		try {
 			implServ.SaveComputer(id, name, introduced, discontinued,
 					company_id);
 			return "redirect:/TableauComputer.html";
-
-		} catch (Exception e) {
-			model.addAttribute("error", "Erreur technique " + e.getMessage());
-			e.printStackTrace();
-			return "errorPage";
-		}
 	}
 
 	
