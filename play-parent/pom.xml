@@ -26,6 +26,7 @@
 		<versionJavax>2.5</versionJavax>
 		<versionBoneCp>0.8.0-rc1</versionBoneCp>
 		<versionTomCat>5.0.16</versionTomCat>
+		<versionJodaTime>2.2</versionJodaTime>
 	</properties>
 
 	<dependencyManagement>
@@ -80,7 +81,11 @@
 				<artifactId>servlet-api</artifactId>
 				<version>${versionJavax}</version>
 			</dependency>
-
+			<dependency>
+				<groupId>joda-time</groupId>
+				<artifactId>joda-time</artifactId>
+				<version>${versionJodaTime}</version>
+			</dependency>
 			<dependency>
 				<groupId>play</groupId>
 				<artifactId>play-modele</artifactId>

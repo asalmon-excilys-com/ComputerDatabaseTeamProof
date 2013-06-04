@@ -1,6 +1,6 @@
 package serviceAPI;
 
-import java.util.Calendar;
+import org.joda.time.DateTime;
 
 import pojo.Page;
 
@@ -12,6 +12,6 @@ public interface InterfaceService {
 
 	void DeleteComputer(Integer id);
 
-	void SaveComputer(Integer id, String name, Calendar introduced,
-			Calendar discontinued, String company_id);
+	void SaveComputer(Integer id, String name, DateTime introduced,
+			DateTime discontinued, String company_id);
 }

@@ -1,7 +1,6 @@
 package service;
 
-import java.util.Calendar;
-
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
@@ -78,8 +77,8 @@ public class ImplementationService implements InterfaceService {
 	}
 
 	@Transactional(readOnly = false)
-	public void SaveComputer(Integer id, String name, Calendar introduced,
-			Calendar discontinued, String company_id){
+	public void SaveComputer(Integer id, String name, DateTime introduced,
+			DateTime discontinued, String company_id){
 
 		Computer cp;
 

@@ -2,9 +2,11 @@ package orm;
 
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
+
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 
 import pojo.Computer;
 
@@ -30,11 +32,11 @@ public class UtilitaireDAO {
 
 		for (Map<String, Object> row : rows) {
 			Computer cp = new Computer();
-
+			
 			cp.setId((Integer) row.get("id"));
 			cp.setName((String) row.get("name"));
-			cp.setIntroduced((Date) row.get("introduced"));
-			cp.setDiscontinued((Date) row.get("discontinued"));
+			cp.setIntroduced(gestionDateToJodaTime((Date) row.get("introduced")));
+			cp.setDiscontinued(gestionDateToJodaTime((Date) row.get("introduced")));
 			cp.setCompany((Integer) row.get("cid"), (String) row.get("cname"));
 			computers.add(cp);
 		}
@@ -47,22 +49,19 @@ public class UtilitaireDAO {
 
 		cp.setId((Integer) row.get("id"));
 		cp.setName((String) row.get("name"));
-		cp.setIntroduced((Date) row.get("introduced"));
-		cp.setDiscontinued((Date) row.get("discontinued"));
+		cp.setIntroduced(gestionDateToJodaTime((Date) row.get("introduced")));
+		cp.setDiscontinued(gestionDateToJodaTime((Date) row.get("discontinued")));
 		cp.setCompany((Integer) row.get("cid"), (String) row.get("cname"));
 
 		return cp;
 	}
 	
-	public static Date gestionNull(Calendar cal) {
-		Date d= null;
-		if (cal != null) {
-			d = new Date(cal.getTimeInMillis());
-		} else {
-			d = null;
+	private static DateTime gestionDateToJodaTime(Date date){
+		DateTime dt = null;
+		if(date != null) {
+			dt = LocalDate.fromDateFields(date).toDateTimeAtStartOfDay();
 		}
-		return d;
+			return dt;
 	}
-	
 
 }

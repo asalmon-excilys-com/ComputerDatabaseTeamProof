@@ -9,13 +9,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pojo.Page;
 import serviceAPI.InterfaceService;
 
-
 @Controller
 public class MainTableController {
 
 	@Autowired
 	private InterfaceService implServ;
-	
+
 	public void setImplServ(InterfaceService implServ) {
 		this.implServ = implServ;
 	}
@@ -31,8 +30,7 @@ public class MainTableController {
 		page.setP(p);
 		page.setF(f);
 
-			model.addAttribute("page",
-					implServ.ConstructionTableauAccueil(page));
-			return "TableauComputer";
+		model.addAttribute("page", implServ.ConstructionTableauAccueil(page));
+		return "TableauComputer";
 	}
 }

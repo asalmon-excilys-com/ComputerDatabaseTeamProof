@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 <%@ page import="java.sql.ResultSet"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
@@ -56,7 +56,7 @@
 						<input type="text" id="introduced" name="introduced"
 							value=<c:choose>
 							<c:when test="${page.cp.introduced != null}">
-							"${page.cp.introducedToString}"
+							"${page.cp.dateTimetoString(page.cp.introduced)}"
 							</c:when>
 						</c:choose>>
 
@@ -70,7 +70,7 @@
 						<input type="text" id="discontinued" name="discontinued"
 							value=<c:choose>
 							<c:when test="${page.cp.discontinued != null}">
-							  "${page.cp.discontinuedToString}"
+								"${page.cp.dateTimetoString(page.cp.discontinued)}"
 							</c:when>
 						</c:choose>>
 
@@ -109,7 +109,8 @@
 
 
 
-		<form action="delete.html?id=${page.cp.id}" method="POST" class="topRight">
+		<form action="delete.html?id=${page.cp.id}" method="POST"
+			class="topRight">
 
 			<input type="submit" value="Delete this computer" class="btn danger">
 

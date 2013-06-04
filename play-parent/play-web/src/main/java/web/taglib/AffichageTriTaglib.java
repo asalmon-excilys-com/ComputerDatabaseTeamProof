@@ -1,7 +1,5 @@
 package web.taglib;
 
-import java.io.IOException;
-
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 
@@ -81,8 +79,8 @@ public class AffichageTriTaglib extends TagSupport {
 					+ "\"><a href=\"TableauComputer.html?s=" + tabCol[3]
 					+ "&f=" + f + "\">Company</a></th>");
 
-		}finally{
-		return SKIP_BODY;
+		} finally {
+			return SKIP_BODY;
 		}
 	}
 

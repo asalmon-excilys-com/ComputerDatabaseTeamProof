@@ -69,7 +69,8 @@
 								<em>-</em>
 							</c:when>
 							<c:otherwise>
-								<c:out value="${rs.introducedToString}"></c:out>
+<!-- 							string -->
+								<c:out value="${rs.dateTimetoString(rs.introduced)}"></c:out>
 							</c:otherwise>
 						</c:choose></td>
 
@@ -78,7 +79,7 @@
 								<em>-</em>
 							</c:when>
 							<c:otherwise>
-								<c:out value="${rs.discontinuedToString}"></c:out>
+								<c:out value="${rs.dateTimetoString(rs.discontinued)}"></c:out>
 							</c:otherwise>
 						</c:choose></td>
 

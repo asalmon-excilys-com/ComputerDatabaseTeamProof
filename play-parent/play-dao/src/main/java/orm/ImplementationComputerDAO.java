@@ -84,8 +84,8 @@ public class ImplementationComputerDAO implements InterfaceComputerDAO {
 
 		ArrayList<Object> insert = new ArrayList<Object>();
 		insert.add(cp.getName());
-		insert.add(UtilitaireDAO.gestionNull(cp.getIntroduced()));
-		insert.add(UtilitaireDAO.gestionNull(cp.getDiscontinued()));
+		insert.add(cp.getIntroduced().toDate());
+		insert.add(cp.getDiscontinued().toDate());
 
 		if (cp.getCompany().getId() == null) {
 			if (newCp == true) {
